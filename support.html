@@ -9,24 +9,28 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta property="og:title" content="Support · Henwood">
 <meta property="og:image" content="https://henwood.app/og.png">
-<style>:root{--ground:#F6F0E4;--surface:#FFFCF6;--ink:#2A211B;--body:#4E4338;--muted:#6B5F52;--line:#DCD1BD;--accent:#4A6636}
-@media (prefers-color-scheme:dark){:root{--ground:#16120E;--surface:#211C17;--ink:#F4EDE2;--body:#D6CBBB;--muted:#AFA292;--line:#433A31;--accent:#A9C98C}}
+<style>:root{--ground:#F6F0E4;--surface:#FFFCF6;--ink:#2A211B;--body:#4E4338;--muted:#6B5F52;--line:#DCD1BD;--accent:#4A6636;--on:#fff}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){--ground:#16120E;--surface:#211C17;--ink:#F4EDE2;--body:#D6CBBB;--muted:#AFA292;--line:#433A31;--accent:#A9C98C;--on:#15200E}}:root[data-theme=dark]{--ground:#16120E;--surface:#211C17;--ink:#F4EDE2;--body:#D6CBBB;--muted:#AFA292;--line:#433A31;--accent:#A9C98C;--on:#15200E}
 *{box-sizing:border-box}html,body{margin:0;background:var(--ground);color:var(--body)}
-body{font-family:"Atkinson Hyperlegible Next","Atkinson Hyperlegible",-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;font-size:17px;line-height:1.6}
+body{font-family:"Atkinson Hyperlegible Next","Atkinson Hyperlegible",-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;font-size:1.0625rem;line-height:1.6}
 header{max-width:720px;margin:0 auto;padding:28px 24px 0;display:flex;align-items:center;gap:10px}
-header a{display:flex;align-items:center;gap:10px;color:var(--ink);text-decoration:none;font-family:ui-serif,"New York","Iowan Old Style",Georgia,serif;font-weight:600;font-size:22px}
+header a{display:flex;align-items:center;gap:10px;color:var(--ink);text-decoration:none;font-family:ui-serif,"New York","Iowan Old Style",Georgia,serif;font-weight:600;font-size:1.375rem}
 header img{width:32px;height:32px;border-radius:8px}
 main{max-width:720px;margin:0 auto;padding:12px 24px 40px}
-h1{font-family:ui-serif,"New York","Iowan Old Style",Georgia,serif;font-weight:600;color:var(--ink);font-size:42px;line-height:1.1;margin:28px 0 6px}
-h2{font-family:ui-serif,"New York","Iowan Old Style",Georgia,serif;font-weight:600;color:var(--ink);font-size:24px;margin:34px 0 6px}
-.updated{color:var(--muted);font-size:15px;margin:0 0 18px}
+h1{font-family:ui-serif,"New York","Iowan Old Style",Georgia,serif;font-weight:600;color:var(--ink);font-size:2.625rem;line-height:1.1;margin:28px 0 6px}
+h2{font-family:ui-serif,"New York","Iowan Old Style",Georgia,serif;font-weight:600;color:var(--ink);font-size:1.5rem;margin:34px 0 6px}
+.updated{color:var(--muted);font-size:0.9375rem;margin:0 0 18px}
 .summary{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:16px 20px;margin:18px 0}
 .summary ul{margin:6px 0 0;padding-left:20px}
 a{color:var(--accent);font-weight:700}
 b{color:var(--ink)}
 li{margin:4px 0}
-footer{max-width:720px;margin:0 auto;padding:24px 24px 40px;color:var(--muted);font-size:14px;border-top:1px solid var(--line)}
+footer{max-width:720px;margin:0 auto;padding:24px 24px 40px;color:var(--muted);font-size:0.875rem;border-top:1px solid var(--line)}
 footer a{color:var(--muted);font-weight:400}</style>
+<link rel="preload" href="/fonts/atkinson-hyperlegible-next.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/display.css">
+<script>try{var d=JSON.parse(localStorage.getItem("henwood.display")||"{}");for(var k in d)document.documentElement.setAttribute("data-"+k,d[k])}catch(e){}</script>
+<script src="/display.js" defer></script>
 </head>
 <body>
 <header><a href="/"><img src="/apple-touch-icon.png" alt="">Henwood</a></header>
@@ -51,6 +55,13 @@ footer a{color:var(--muted);font-weight:400}</style>
 <p><b>Can I get my recipes out?</b><br>Yes. Any recipe can be shared as a Henwood file, a PDF or Markdown.</p>
 <p><b>What happens to my data?</b><br>It stays on your device and in your iCloud. See the <a href="/privacy">privacy page</a> for details.</p>
 </main>
-<footer><a href="/">Home</a> · <a href="/privacy">Privacy</a> · <a href="/support">Support</a> · © 2026 Henwood</footer>
+<footer><a href="/">Home</a> · <a href="/privacy">Privacy</a> · <a href="/support">Support</a> · <a href="/accessibility">Accessibility</a> · © 2026 Henwood</footer>
+<button class="dp-toggle" type="button" popovertarget="display-panel" aria-label="Display and accessibility settings"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><circle cx="12" cy="4.5" r="2" fill="currentColor"/><path d="M4 8.5c2.6.8 5.3 1.2 8 1.2s5.4-.4 8-1.2M12 9.7v5m0 0-3.5 6.8M12 14.7l3.5 6.8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+<div id="display-panel" class="dp-panel" popover role="dialog" aria-labelledby="display-panel-title">
+<div class="dp-head"><h2 id="display-panel-title">Display settings</h2><button type="button" class="dp-close" popovertarget="display-panel" popovertargetaction="hide" aria-label="Close display settings"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button></div>
+<form class="dp-options"><fieldset><legend>Theme</legend><div class="dp-seg"><label><input type="radio" name="theme" value="auto" checked><span>System</span></label><label><input type="radio" name="theme" value="light"><span>Light</span></label><label><input type="radio" name="theme" value="dark"><span>Dark</span></label></div></fieldset><fieldset><legend>Text size</legend><div class="dp-seg"><label><input type="radio" name="text" value="default" checked><span>Default</span></label><label><input type="radio" name="text" value="large"><span>Large</span></label><label><input type="radio" name="text" value="larger"><span>Larger</span></label></div></fieldset><fieldset><legend>Contrast</legend><div class="dp-seg"><label><input type="radio" name="contrast" value="auto" checked><span>System</span></label><label><input type="radio" name="contrast" value="default"><span>Standard</span></label><label><input type="radio" name="contrast" value="more"><span>More</span></label></div></fieldset><fieldset><legend>Font</legend><div class="dp-seg"><label><input type="radio" name="font" value="default" checked><span>Hyperlegible</span></label><label><input type="radio" name="font" value="system"><span>Device font</span></label></div></fieldset><fieldset><legend>Spacing</legend><div class="dp-seg"><label><input type="radio" name="spacing" value="default" checked><span>Default</span></label><label><input type="radio" name="spacing" value="wide"><span>Wide</span></label></div></fieldset><fieldset><legend>Motion</legend><div class="dp-seg"><label><input type="radio" name="motion" value="auto" checked><span>System</span></label><label><input type="radio" name="motion" value="reduce"><span>Reduce</span></label></div></fieldset><fieldset><legend>Links</legend><div class="dp-seg"><label><input type="radio" name="links" value="default" checked><span>Default</span></label><label><input type="radio" name="links" value="underline"><span>Underline all</span></label></div></fieldset></form>
+<div class="dp-foot"><button type="button" class="dp-reset">Reset</button><a href="/accessibility">Accessibility</a></div>
+<p class="dp-note">Saved in this browser only.</p>
+</div>
 </body>
 </html>

@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Accessibility · Henwood</title>
+<meta name="description" content="How Henwood is built to work for everyone, the display settings you can change on this site, and how to tell me when something gets in your way.">
+<link rel="icon" href="/favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta property="og:title" content="Accessibility · Henwood">
+<meta property="og:image" content="https://henwood.app/og.png">
+<style>:root{--ground:#F6F0E4;--surface:#FFFCF6;--ink:#2A211B;--body:#4E4338;--muted:#6B5F52;--line:#DCD1BD;--accent:#4A6636;--on:#fff}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){--ground:#16120E;--surface:#211C17;--ink:#F4EDE2;--body:#D6CBBB;--muted:#AFA292;--line:#433A31;--accent:#A9C98C;--on:#15200E}}:root[data-theme=dark]{--ground:#16120E;--surface:#211C17;--ink:#F4EDE2;--body:#D6CBBB;--muted:#AFA292;--line:#433A31;--accent:#A9C98C;--on:#15200E}
+*{box-sizing:border-box}html,body{margin:0;background:var(--ground);color:var(--body)}
+body{font-family:"Atkinson Hyperlegible Next","Atkinson Hyperlegible",-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;font-size:1.0625rem;line-height:1.6}
+header{max-width:720px;margin:0 auto;padding:28px 24px 0;display:flex;align-items:center;gap:10px}
+header a{display:flex;align-items:center;gap:10px;color:var(--ink);text-decoration:none;font-family:ui-serif,"New York","Iowan Old Style",Georgia,serif;font-weight:600;font-size:1.375rem}
+header img{width:32px;height:32px;border-radius:8px}
+main{max-width:720px;margin:0 auto;padding:12px 24px 40px}
+h1{font-family:ui-serif,"New York","Iowan Old Style",Georgia,serif;font-weight:600;color:var(--ink);font-size:2.625rem;line-height:1.1;margin:28px 0 6px}
+h2{font-family:ui-serif,"New York","Iowan Old Style",Georgia,serif;font-weight:600;color:var(--ink);font-size:1.5rem;margin:34px 0 6px}
+.updated{color:var(--muted);font-size:0.9375rem;margin:0 0 18px}
+.summary{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:16px 20px;margin:18px 0}
+.summary ul{margin:6px 0 0;padding-left:20px}
+a{color:var(--accent);font-weight:700}
+b{color:var(--ink)}
+li{margin:4px 0}
+footer{max-width:720px;margin:0 auto;padding:24px 24px 40px;color:var(--muted);font-size:0.875rem;border-top:1px solid var(--line)}
+footer a{color:var(--muted);font-weight:400}</style>
+<link rel="preload" href="/fonts/atkinson-hyperlegible-next.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/display.css">
+<script>try{var d=JSON.parse(localStorage.getItem("henwood.display")||"{}");for(var k in d)document.documentElement.setAttribute("data-"+k,d[k])}catch(e){}</script>
+<script src="/display.js" defer></script>
+</head>
+<body>
+<header><a href="/"><img src="/apple-touch-icon.png" alt="">Henwood</a></header>
+<main>
+<h1>Accessibility</h1>
+<p class="updated">Last updated November 6, 2026</p>
+<div class="summary"><b>The short version</b>
+<ul>
+<li>Henwood should work for everyone, however you cook and however you get around your phone or the web.</li>
+<li>This site aims for WCAG 2.2 level AA. It hasn't been formally audited yet.</li>
+<li>If anything gets in your way, email <a href="mailto:hello@henwood.app?subject=Accessibility">hello@henwood.app</a> and I'll fix it.</li>
+</ul></div>
+
+<h2>The app</h2>
+<p>Henwood isn't out yet. It's being built to follow the accessibility settings already on your iPhone, iPad and Mac, like VoiceOver, larger text, Reduce Motion and Increase Contrast, so you don't have to set anything up twice. You can also talk to it: tell Henwood or Siri what you're out of instead of tapping through screens. This page will cover the app in more detail when it launches.</p>
+
+<h2>This website</h2>
+<ul>
+<li><b>A typeface made for reading.</b> Text is set in <a href="https://www.brailleinstitute.org/freefont/">Atkinson Hyperlegible Next</a>, designed by the Braille Institute for readers with low vision, so letters that are easy to mix up look clearly different.</li>
+<li><b>Readable color.</b> Text meets AA contrast in light and dark mode.</li>
+<li><b>Keyboard friendly.</b> Everything works with a keyboard, with a visible focus ring. The hen on the home page answers to Enter or the space bar too.</li>
+<li><b>Gentle motion.</b> The hen only moves if your device allows motion.</li>
+<li><b>Your device's settings, followed.</b> Light or dark mode, reduced motion and increased contrast follow your system preferences.</li>
+<li><b>Text that scales.</b> You can zoom to 200% or more without losing anything.</li>
+</ul>
+
+<h2>Display settings</h2>
+<p>The round button in the bottom corner of every page opens display settings. You can change:</p>
+<ul>
+<li><b>Theme:</b> follow your device, or always light or always dark</li>
+<li><b>Text size:</b> default, large or larger</li>
+<li><b>Contrast:</b> follow your device, standard, or more</li>
+<li><b>Font:</b> keep Atkinson Hyperlegible, or use your device's own font</li>
+<li><b>Spacing:</b> wider line, letter and word spacing</li>
+<li><b>Motion:</b> turn off animations even if your device allows them</li>
+<li><b>Links:</b> underline every link</li>
+</ul>
+<p>Your choices are saved in this browser only. They aren't sent anywhere, and Reset puts everything back. These are extras, not fixes: the site should work well without them, and it doesn't use an accessibility overlay.</p>
+
+<h2>Tell me what's not working</h2>
+<p>Henwood is made by one person, so you'll hear back from me directly. <a href="mailto:hello@henwood.app?subject=Accessibility">Email hello@henwood.app</a> with the page or screen and what happened, and I'll aim to reply within a week.</p>
+</main>
+
+<footer><a href="/">Home</a> · <a href="/privacy">Privacy</a> · <a href="/support">Support</a> · <a href="/accessibility">Accessibility</a> · © 2026 Henwood</footer>
+<button class="dp-toggle" type="button" popovertarget="display-panel" aria-label="Display and accessibility settings"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><circle cx="12" cy="4.5" r="2" fill="currentColor"/><path d="M4 8.5c2.6.8 5.3 1.2 8 1.2s5.4-.4 8-1.2M12 9.7v5m0 0-3.5 6.8M12 14.7l3.5 6.8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+<div id="display-panel" class="dp-panel" popover role="dialog" aria-labelledby="display-panel-title">
+<div class="dp-head"><h2 id="display-panel-title">Display settings</h2><button type="button" class="dp-close" popovertarget="display-panel" popovertargetaction="hide" aria-label="Close display settings"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button></div>
+<form class="dp-options"><fieldset><legend>Theme</legend><div class="dp-seg"><label><input type="radio" name="theme" value="auto" checked><span>System</span></label><label><input type="radio" name="theme" value="light"><span>Light</span></label><label><input type="radio" name="theme" value="dark"><span>Dark</span></label></div></fieldset><fieldset><legend>Text size</legend><div class="dp-seg"><label><input type="radio" name="text" value="default" checked><span>Default</span></label><label><input type="radio" name="text" value="large"><span>Large</span></label><label><input type="radio" name="text" value="larger"><span>Larger</span></label></div></fieldset><fieldset><legend>Contrast</legend><div class="dp-seg"><label><input type="radio" name="contrast" value="auto" checked><span>System</span></label><label><input type="radio" name="contrast" value="default"><span>Standard</span></label><label><input type="radio" name="contrast" value="more"><span>More</span></label></div></fieldset><fieldset><legend>Font</legend><div class="dp-seg"><label><input type="radio" name="font" value="default" checked><span>Hyperlegible</span></label><label><input type="radio" name="font" value="system"><span>Device font</span></label></div></fieldset><fieldset><legend>Spacing</legend><div class="dp-seg"><label><input type="radio" name="spacing" value="default" checked><span>Default</span></label><label><input type="radio" name="spacing" value="wide"><span>Wide</span></label></div></fieldset><fieldset><legend>Motion</legend><div class="dp-seg"><label><input type="radio" name="motion" value="auto" checked><span>System</span></label><label><input type="radio" name="motion" value="reduce"><span>Reduce</span></label></div></fieldset><fieldset><legend>Links</legend><div class="dp-seg"><label><input type="radio" name="links" value="default" checked><span>Default</span></label><label><input type="radio" name="links" value="underline"><span>Underline all</span></label></div></fieldset></form>
+<div class="dp-foot"><button type="button" class="dp-reset">Reset</button><a href="/accessibility">Accessibility</a></div>
+<p class="dp-note">Saved in this browser only.</p>
+</div>
+</body>
+</html>

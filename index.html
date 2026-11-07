@@ -19,24 +19,24 @@
 <meta name="twitter:card" content="summary_large_image">
 <style>
 :root{--ground:#F6F0E4;--surface:#FFFCF6;--raised:#ECE3D2;--ink:#2A211B;--body:#4E4338;--muted:#6B5F52;--line:#DCD1BD;--accent:#4A6636;--on:#fff}
-@media (prefers-color-scheme:dark){:root{--ground:#16120E;--surface:#211C17;--raised:#2F2822;--ink:#F4EDE2;--body:#D6CBBB;--muted:#AFA292;--line:#433A31;--accent:#A9C98C;--on:#15200E}}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){--ground:#16120E;--surface:#211C17;--raised:#2F2822;--ink:#F4EDE2;--body:#D6CBBB;--muted:#AFA292;--line:#433A31;--accent:#A9C98C;--on:#15200E}}:root[data-theme=dark]{--ground:#16120E;--surface:#211C17;--raised:#2F2822;--ink:#F4EDE2;--body:#D6CBBB;--muted:#AFA292;--line:#433A31;--accent:#A9C98C;--on:#15200E}
 *{box-sizing:border-box}
 html,body{margin:0;background:var(--ground);color:var(--ink)}
-body{font-family:"Atkinson Hyperlegible Next","Atkinson Hyperlegible",-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;font-size:18px;line-height:1.5;min-height:100vh;display:flex;flex-direction:column}
+body{font-family:"Atkinson Hyperlegible Next","Atkinson Hyperlegible",-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;font-size:1.125rem;line-height:1.5;min-height:100vh;display:flex;flex-direction:column}
 main{flex:1;width:100%;max-width:720px;margin:0 auto;padding:56px 24px 32px;display:flex;flex-direction:column;align-items:center;text-align:center}
 .serif{font-family:ui-serif,"New York","Iowan Old Style",Georgia,serif}
-h1{font-family:ui-serif,"New York","Iowan Old Style",Georgia,serif;font-weight:600;font-size:clamp(56px,13vw,96px);letter-spacing:-.02em;line-height:1;margin:6px 0 0}
-.tag{font-size:clamp(19px,4.6vw,23px);color:var(--body);margin:16px 0 0;max-width:30ch}
-.soon{display:inline-block;margin-top:26px;background:var(--accent);color:var(--on);font-weight:700;font-size:15px;letter-spacing:.06em;text-transform:uppercase;border-radius:99px;padding:9px 18px}
-.platforms{color:var(--muted);font-size:15px;margin-top:10px}
+h1{font-family:ui-serif,"New York","Iowan Old Style",Georgia,serif;font-weight:600;font-size:clamp(3.5rem,13vw,6rem);letter-spacing:-.02em;line-height:1;margin:6px 0 0}
+.tag{font-size:clamp(1.1875rem,4.6vw,1.4375rem);color:var(--body);margin:16px 0 0;max-width:30ch}
+.soon{display:inline-block;margin-top:26px;background:var(--accent);color:var(--on);font-weight:700;font-size:0.9375rem;letter-spacing:.06em;text-transform:uppercase;border-radius:99px;padding:9px 18px}
+.platforms{color:var(--muted);font-size:0.9375rem;margin-top:10px}
 .hen{width:220px;height:220px;cursor:pointer;-webkit-tap-highlight-color:transparent;touch-action:manipulation;overflow:visible}
 .hen:focus-visible{outline:3px solid var(--accent);outline-offset:6px;border-radius:24px}
 .features{list-style:none;padding:0;margin:44px 0 0;display:grid;gap:12px;width:100%;text-align:left}
-.features li{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:16px 18px 16px 58px;position:relative;color:var(--body);font-size:17px}
-.features li b{color:var(--ink);display:block;font-size:18px}
-.features li span.i{position:absolute;left:18px;top:17px;font-size:22px;line-height:1}
-.hint{color:var(--muted);font-size:14px;margin-top:10px;min-height:21px}
-footer{padding:28px 24px 36px;text-align:center;color:var(--muted);font-size:14px}
+.features li{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:16px 18px 16px 58px;position:relative;color:var(--body);font-size:1.0625rem}
+.features li b{color:var(--ink);display:block;font-size:1.125rem}
+.features li span.i{position:absolute;left:18px;top:17px;font-size:1.375rem;line-height:1}
+.hint{color:var(--muted);font-size:0.875rem;margin-top:10px;min-height:21px}
+footer{padding:28px 24px 36px;text-align:center;color:var(--muted);font-size:0.875rem}
 footer a{color:var(--muted)}
 /* the hen */
 .hen .bird{transform-box:fill-box;transform-origin:50% 100%;animation:bob 2.4s ease-in-out infinite}
@@ -55,6 +55,10 @@ footer a{color:var(--muted)}
 @keyframes puff{0%,100%{transform:scale(1)}30%{transform:scale(1.08,1.2)}}
 @media (prefers-reduced-motion:reduce){.hen *{animation:none!important}}
 </style>
+<link rel="preload" href="/fonts/atkinson-hyperlegible-next.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/display.css">
+<script>try{var d=JSON.parse(localStorage.getItem("henwood.display")||"{}");for(var k in d)document.documentElement.setAttribute("data-"+k,d[k])}catch(e){}</script>
+<script src="/display.js" defer></script>
 </head>
 <body>
 <main>
@@ -87,7 +91,7 @@ footer a{color:var(--muted)}
   </ul>
   <div class="hint" id="hint" aria-live="polite"></div>
 </main>
-<footer><a href="/privacy">Privacy</a> · <a href="/support">Support</a> · <a href="mailto:hello@henwood.app">hello@henwood.app</a><br>© 2026 Henwood · made in Seattle by <a href="https://kylepace.net">Kyle Pace</a></footer>
+<footer><a href="/privacy">Privacy</a> · <a href="/support">Support</a> · <a href="/accessibility">Accessibility</a> · <a href="mailto:hello@henwood.app">hello@henwood.app</a><br>© 2026 Henwood · made in Seattle by <a href="https://kylepace.net">Kyle Pace</a></footer>
 <script>
 (function(){
   var hen=document.getElementById('hen'), fx=document.getElementById('fx'), hint=document.getElementById('hint');
@@ -115,7 +119,7 @@ footer a{color:var(--muted)}
     setTimeout(function(){hint.textContent=''},4000);
   }
   function tap(){
-    if(still)return;
+    if(still||document.documentElement.getAttribute('data-motion')==='reduce')return;
     hen.classList.remove('hop');void hen.getBoundingClientRect();hen.classList.add('hop');
     feathers();
     var now=Date.now();taps=taps.filter(function(t){return now-t<2500});taps.push(now);
@@ -126,5 +130,12 @@ footer a{color:var(--muted)}
   hen.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();tap()}});
 })();
 </script>
+<button class="dp-toggle" type="button" popovertarget="display-panel" aria-label="Display and accessibility settings"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><circle cx="12" cy="4.5" r="2" fill="currentColor"/><path d="M4 8.5c2.6.8 5.3 1.2 8 1.2s5.4-.4 8-1.2M12 9.7v5m0 0-3.5 6.8M12 14.7l3.5 6.8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+<div id="display-panel" class="dp-panel" popover role="dialog" aria-labelledby="display-panel-title">
+<div class="dp-head"><h2 id="display-panel-title">Display settings</h2><button type="button" class="dp-close" popovertarget="display-panel" popovertargetaction="hide" aria-label="Close display settings"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button></div>
+<form class="dp-options"><fieldset><legend>Theme</legend><div class="dp-seg"><label><input type="radio" name="theme" value="auto" checked><span>System</span></label><label><input type="radio" name="theme" value="light"><span>Light</span></label><label><input type="radio" name="theme" value="dark"><span>Dark</span></label></div></fieldset><fieldset><legend>Text size</legend><div class="dp-seg"><label><input type="radio" name="text" value="default" checked><span>Default</span></label><label><input type="radio" name="text" value="large"><span>Large</span></label><label><input type="radio" name="text" value="larger"><span>Larger</span></label></div></fieldset><fieldset><legend>Contrast</legend><div class="dp-seg"><label><input type="radio" name="contrast" value="auto" checked><span>System</span></label><label><input type="radio" name="contrast" value="default"><span>Standard</span></label><label><input type="radio" name="contrast" value="more"><span>More</span></label></div></fieldset><fieldset><legend>Font</legend><div class="dp-seg"><label><input type="radio" name="font" value="default" checked><span>Hyperlegible</span></label><label><input type="radio" name="font" value="system"><span>Device font</span></label></div></fieldset><fieldset><legend>Spacing</legend><div class="dp-seg"><label><input type="radio" name="spacing" value="default" checked><span>Default</span></label><label><input type="radio" name="spacing" value="wide"><span>Wide</span></label></div></fieldset><fieldset><legend>Motion</legend><div class="dp-seg"><label><input type="radio" name="motion" value="auto" checked><span>System</span></label><label><input type="radio" name="motion" value="reduce"><span>Reduce</span></label></div></fieldset><fieldset><legend>Links</legend><div class="dp-seg"><label><input type="radio" name="links" value="default" checked><span>Default</span></label><label><input type="radio" name="links" value="underline"><span>Underline all</span></label></div></fieldset></form>
+<div class="dp-foot"><button type="button" class="dp-reset">Reset</button><a href="/accessibility">Accessibility</a></div>
+<p class="dp-note">Saved in this browser only.</p>
+</div>
 </body>
 </html>
