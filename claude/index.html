@@ -30,6 +30,10 @@ b{color:var(--ink)}
 li{margin:4px 0}
 footer{max-width:720px;margin:0 auto;padding:24px 24px 40px;color:var(--muted);font-size:0.875rem;border-top:1px solid var(--line)}
 footer a{color:var(--muted);font-weight:400}
+footer a{display:inline-block;padding-block:.125rem}
+/* about 70 characters a line */
+main p:not(.updated),main li{max-width:32em}
+.summary{max-width:calc(32em + 42px)}
 .button{display:inline-block;background:var(--accent);color:var(--on);text-decoration:none;font-weight:700;padding:12px 22px;border-radius:999px;margin:6px 0}
 ol li{margin:8px 0}
 code{font-family:ui-monospace,Menlo,monospace;font-size:0.9em;background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:1px 6px;color:var(--ink)}
