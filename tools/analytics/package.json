@@ -1,0 +1,15 @@
+{
+  "name": "henwood-app-analytics",
+  "private": true,
+  "description": "Builds /analytics.js for henwood.app. The site itself has no build step; this is only for refreshing that one file.",
+  "type": "module",
+  "scripts": {
+    "build": "esbuild analytics.src.js --bundle --format=esm --minify --target=es2020 --outfile=../../analytics.js --banner:js=\"/* Built from tools/analytics/analytics.src.js. Don't edit by hand: cd tools/analytics && npm ci && npm run build */\""
+  },
+  "dependencies": {
+    "@amplitude/analytics-browser": "2.49.2"
+  },
+  "devDependencies": {
+    "esbuild": "0.25.10"
+  }
+}
