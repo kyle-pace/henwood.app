@@ -197,4 +197,5 @@ henwood.app: the website for Henwood, Kyle's pantry and recipes app. A plain sta
 - It uses Henwood's own branding, not kp-design.
 - **No analytics yet, so the stack check fails here on purpose.** Adding Amplitude means changing what `privacy.html` promises, so it needs Kyle's OK and wording first. Don't switch the check off in `.agents/stack.json` to make it pass.
 - There's no check command (no package.json). To check a change, run the page check from a clone of the principles repo against this folder, or look at 320, 768, 1280 and 1920 px in light and dark by hand.
+- **Search:** the home page title names the app and its platforms, and it carries WebSite structured data (JSON-LD). `robots.txt` and a hand-kept `sitemap.xml` list the pages: add a page there when you add one. At launch, switch the JSON-LD to MobileApplication with the App Store link and add Apple's Smart App Banner tag. The site is in Google Search Console as a domain property.
 - Pushing to `main` publishes the site.
