@@ -79,7 +79,8 @@ Every project uses the same rules, so charts read the same way everywhere.
 - Leave Amplitude's own `[Amplitude] …` events alone. Add custom events only for actions that answer a real product question; autocapture covers page views and clicks.
 - **One Amplitude project per product.**
 - kylepace.dev and every experiment on it share the kylepace.dev project, so each experiment's custom events also send `experiment` with the project's slug (`experiment: "skill-tree"`).
-- **Tracking plan first:** add each new event to the project's tracking plan in Amplitude, with a description and category, when it ships. Nothing should arrive as "unexpected".
+- **Every new feature ships with its events.** Building a feature includes its analytics: the events that say whether people find it and use it, written in the same change as the feature, not left as a follow-up. Say in your report which events you added, or why the feature needs none.
+- **Tracking plan first:** add each new event and its properties to the project's tracking plan in Amplitude, with a description and category, as part of the same piece of work. Do it yourself when you can reach Amplitude; if you can't, say so and list exactly what needs adding. Nothing should arrive as "unexpected".
 - **Renaming an event:** rename it in code, then merge the old name into the new one in Amplitude so history stays connected. Don't rename in Amplitude alone.
 - **New product:** create its Amplitude project and add a row for it to the "All projects overview" dashboard. A new experiment on kylepace.dev needs neither: it appears there by page path.
 
@@ -96,7 +97,8 @@ Every project uses the same rules, so charts read the same way everywhere.
 - Before building a page or app's look, write a short plan in `design/PLAN.md`: the subject and who it's for, the one bold element, 4 to 6 named colors (light and dark), and the layout as a sketch. Take the ideas from the subject's own world, not from other websites. If a frontend-design skill is available, load it.
 - Check the plan against the generated defaults and change anything that matches: a big headline over a muted sentence and a pill button; pills or one corner radius on everything; grids of identical cards; small labels above headings; colored dots or squares as decoration; details joined with middle dots; monospace for small labels; copy that explains the interface instead of using it.
 - Spend boldness in one place and keep the rest quiet. Look at screenshots (phone and desktop, light and dark) before calling it done.
-- Experiments on kylepace.dev are their own pages (kp-design's `LabLayout`) with their own look. The app comes first; the explanation goes in an About section linked from the top bar.
+- Experiments on kylepace.dev are their own pages (kp-design's `LabLayout`) with their own look. The app comes first; the explanation goes on its About page, linked from the top bar.
+- About pages use the same title, headings and step format everywhere (the `about-page` skill). The look can follow the project's theme; the words never do.
 
 ### How things get built
 
@@ -104,6 +106,16 @@ Every project uses the same rules, so charts read the same way everywhere.
 - Colors, type and spacing live in one tokens file. Light and dark mode exist from the start.
 - Copy is plain language, written for the person using it.
 - Don't add "Built with AI" lines or other AI credits to sites or apps unless Kyle asks.
+
+### Docs stay current
+
+Docs are part of the change, like its analytics events: the same piece of work updates every doc that describes what changed, in every project it touches. Not a follow-up, and not only when a session ends.
+
+- **In the repo:** the README (what it is, how to build and run it), the project's section of this file, and any handoff or status file the project keeps (where things stand, decisions, what's left).
+- **In Confluence:** the project's pages in the App Projects space (https://kylepace.atlassian.net/wiki/spaces/APPS). Update the status line and date on the project's overview page and the pages about what changed (architecture, analytics, notifications, roadmap and so on). A new feature that needs more than a few lines gets its own page under the project's. Do it yourself when you can reach Confluence; if you can't, say so and list what needs changing.
+- The project's section names its Confluence overview page. A project with none yet gets one with its first real feature.
+- Write for someone picking it up cold: what it does, how it works, where it stands, and the date. When something stops being true, change or remove it; don't add the new fact beside the old one.
+- Say in your report which docs you updated, or why the change needed none.
 
 ### Correctness
 
@@ -146,6 +158,16 @@ Kyle is a product leader building his development skills through this work. Trea
 - A real title, description and favicon.
 - A privacy note if it collects anything.
 
+A new website on its own domain also gets set up so search engines can find it, as part of launch, not later:
+
+- A home page title that says what the site is and who it's for ("Henwood: pantry and recipes app for iPhone, iPad and Mac"), not just the name.
+- `robots.txt` that points to a sitemap, and a sitemap that lists every page meant to be found. Astro sites use `@astrojs/sitemap`; a hand-written site keeps `sitemap.xml` by hand and adds each new page to it.
+- Structured data (JSON-LD) on the home page: `WebSite` for every site, `MobileApplication` with the store or TestFlight link for an app's site, and Kyle's `Person` (`@id` `https://kylepace.net/#kyle`) on his personal sites.
+- A Google Search Console domain property, with the sitemap submitted there. Verifying the domain adds a DNS record, so ask Kyle first (see "Shipping").
+- The site imported into [Bing Webmaster Tools](https://www.bing.com/webmasters) from Search Console, which also covers DuckDuckGo. Bing only brings in sitemaps already submitted to Google, so do Search Console first.
+- A few days after launch, check Search Console's Pages report and fix anything it says it couldn't crawl.
+- Changing a favicon later? Give the new file a new name (`favicon-v2.png`), because Google keeps showing the old one for weeks otherwise.
+
 ### Before you call it done
 
 Match the checking to the change. If you're unsure which tier a change is, use the higher one. In your report, say which tier you used and what you ran.
@@ -154,10 +176,12 @@ Match the checking to the change. If you're unsure which tier a change is, use t
 
 - The build passes, and so do any tests and linters.
 - Read the changed text where it shows up in the built output.
+- The docs that describe what changed are updated, in the repo and in Confluence (see "Docs stay current").
 
 **Tier 2: something people see or use changed.** Layout, styles, a component, a new control, new behavior.
 
 - Everything in tier 1.
+- A new feature has its events in code and in the Amplitude tracking plan (see "Analytics events").
 - Run the project's check command (`npm run check` where a project has one). It runs axe on every page in light and dark, fails on sideways scrolling, and saves screenshots at 320, 768, 1280 and 1920 px. Fix what it finds.
 - Look at the changed screen in light and dark, at the smallest size and a large one.
 - Use new controls with the keyboard (and VoiceOver in apps): reachable, visible focus, a name that makes sense.
@@ -184,4 +208,5 @@ henwood.app: the website for Henwood, Kyle's pantry and recipes app. A plain sta
 - **Analytics is Amplitude, set up the private way**, reporting to the Henwood project (the same one the app uses). Every page loads the small `/analytics-loader.js`, which fetches `/analytics.js` only on henwood.app and only when the browser hasn't opted out (Global Privacy Control, Do Not Track, or the switch on the Privacy page, saved as `henwood.analyticsOff`). `/analytics.js` is a built file: its source and pinned versions are in `tools/analytics/`; rebuild with `cd tools/analytics && npm ci && npm run build` and commit the result. Don't edit `/analytics.js` by hand.
 - **`privacy.html` describes exactly what the site and the app collect.** If analytics changes (Session Replay, a custom event, a new host), change that page in the same commit, with a new date at the top.
 - There's no check command (no package.json). To check a change, run the page check from a clone of the principles repo against this folder, or look at 320, 768, 1280 and 1920 px in light and dark by hand.
+- **Search:** the home page title names the app and its platforms, and it carries WebSite structured data (JSON-LD). `robots.txt` and a hand-kept `sitemap.xml` list the pages: add a page there when you add one. At launch, switch the JSON-LD to MobileApplication with the App Store link and add Apple's Smart App Banner tag. The site is in Google Search Console as a domain property.
 - Pushing to `main` publishes the site.
