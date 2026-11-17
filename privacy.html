@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Privacy · Henwood</title>
-<meta name="description" content="How Henwood handles your data: no accounts, no ads, no tracking, and your kitchen stays on your device and in your iCloud.">
+<meta name="description" content="How Henwood handles your data: no accounts, no ads, nothing sold, and your kitchen stays on your device and in your iCloud.">
 <link rel="icon" href="/favicon.png" type="image/png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta property="og:title" content="Privacy · Henwood">
@@ -30,23 +30,27 @@ footer a{color:var(--muted);font-weight:400}
 footer a{display:inline-block;padding-block:.125rem}
 /* about 70 characters a line */
 main p:not(.updated),main li{max-width:32em}
-.summary{max-width:calc(32em + 42px)}</style>
+.summary{max-width:calc(32em + 42px)}
+.linkish{font:inherit;font-weight:700;color:var(--accent);background:none;border:0;padding:.25rem 0;text-decoration:underline;text-underline-offset:.15em;cursor:pointer;text-align:left}
+.linkish:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:4px}</style>
 <link rel="preload" href="/fonts/atkinson-hyperlegible-next.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/display.css">
 <script>try{var d=JSON.parse(localStorage.getItem("henwood.display")||"{}");for(var k in d)document.documentElement.setAttribute("data-"+k,d[k])}catch(e){}</script>
 <script src="/display.js" defer></script>
+<script src="/analytics-loader.js" defer></script>
 </head>
 <body>
 <header><a href="/"><img src="/apple-touch-icon.png" alt="">Henwood</a></header>
 <main>
 <h1>Privacy</h1>
-<p class="updated">Last updated November 6, 2026</p>
+<p class="updated">Last updated November 14, 2026</p>
 <div class="summary"><b>The short version</b>
 <ul>
-<li>Henwood has no accounts, no ads and no tracking, and never sells data.</li>
+<li>Henwood has no accounts and no ads, and never sells data.</li>
 <li>Your pantry, recipes, lists and chats stay on your device and in your own iCloud. I can't see them.</li>
 <li>The smart features run on your device using Apple's built-in model.</li>
-<li>Anonymous usage counts are sent only if you say yes, and you can change that any time.</li>
+<li>In the app, anonymous usage counts are sent only if you say yes, and you can change that any time.</li>
+<li>This website counts visits anonymously, with no cookies and no IP address stored. You can turn that off below.</li>
 </ul></div>
 
 <h2>What Henwood stores, and where</h2>
@@ -74,9 +78,14 @@ main p:not(.updated),main li{max-width:32em}
 <li><b>Usage counts,</b> only if you said yes (below).</li>
 </ul>
 
-<h2>Usage counts (optional)</h2>
+<h2>Usage counts in the app (optional)</h2>
 <p>When you first open Henwood, it asks whether you'd like to share anonymous usage counts. Nothing is sent unless you say yes. If you do, Henwood sends counts of which features get used and how often (for example, "a recipe was imported" or "the chat was used"), plus when the app was opened, to <a href="https://amplitude.com/privacy">Amplitude</a>, an analytics service. This helps me decide what to build next.</p>
 <p>These counts never include what's in your kitchen: no item names, recipe titles, chat text, photos or notes. There's no account or name attached. Amplitude uses a random ID that resets if you reinstall the app, and IP address, city and carrier collection is turned off. Henwood doesn't use Apple's advertising identifier. You can turn sharing off any time in Henwood under Settings, Privacy.</p>
+
+<h2 id="website">This website</h2>
+<p>henwood.app uses <a href="https://amplitude.com/privacy">Amplitude</a> to see which pages are viewed and what gets clicked, so I can improve the site. It's set up to be as private as possible: no IP address stored, no cookies, and no name or account. Amplitude keeps a random ID in your browser's storage so it can tell a return visit from a new one, and receives basic details like browser type and screen size. Nothing here is linked to what you do in the app.</p>
+<p>It doesn't run at all if your browser sends Global Privacy Control or Do Not Track, or if you turn it off here: <button type="button" class="linkish" data-analytics-toggle>Turn off analytics in this browser</button> <span data-analytics-state role="status"></span></p>
+<p>That choice and your display settings are saved in your browser's storage and never sent anywhere. Everything else on this site, fonts included, is served from henwood.app itself.</p>
 
 <h2>Deleting your data</h2>
 <ul>

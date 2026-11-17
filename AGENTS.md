@@ -200,12 +200,13 @@ CI runs the check command where a project has one, the stack check (see "Default
 
 ## This project
 
-henwood.app: the website for Henwood, Kyle's pantry and recipes app. A plain static site (hand-written HTML, `display.css`, `display.js`, self-hosted Atkinson in `fonts/`) served by GitHub Pages from `main`, with no build step and no package.json. The app itself lives in the private repo `henwood-pantry-and-recipes`.
+henwood.app: the website for Henwood, Kyle's pantry and recipes app. A plain static site (hand-written HTML, `display.css`, `display.js`, self-hosted Atkinson in `fonts/`) served by GitHub Pages from `main`, with no build step and no package.json at its root. The app itself lives in the private repo `henwood-pantry-and-recipes`.
 
 - Pages: `index.html` (coming soon), `privacy.html` (also the app's privacy policy), `support.html`, `accessibility.html`, `404.html`. `claude/` hosts the Claude extension for Henwood's local MCP server.
 - Public contact address: hello@henwood.app.
 - It uses Henwood's own branding, not kp-design.
-- **No analytics yet, so the stack check fails here on purpose.** Adding Amplitude means changing what `privacy.html` promises, so it needs Kyle's OK and wording first. Don't switch the check off in `.agents/stack.json` to make it pass.
+- **Analytics is Amplitude, set up the private way**, reporting to the Henwood project (the same one the app uses). Every page loads the small `/analytics-loader.js`, which fetches `/analytics.js` only on henwood.app and only when the browser hasn't opted out (Global Privacy Control, Do Not Track, or the switch on the Privacy page, saved as `henwood.analyticsOff`). `/analytics.js` is a built file: its source and pinned versions are in `tools/analytics/`; rebuild with `cd tools/analytics && npm ci && npm run build` and commit the result. Don't edit `/analytics.js` by hand.
+- **`privacy.html` describes exactly what the site and the app collect.** If analytics changes (Session Replay, a custom event, a new host), change that page in the same commit, with a new date at the top.
 - There's no check command (no package.json). To check a change, run the page check from a clone of the principles repo against this folder, or look at 320, 768, 1280 and 1920 px in light and dark by hand.
 - **Search:** the home page title names the app and its platforms, and it carries WebSite structured data (JSON-LD). `robots.txt` and a hand-kept `sitemap.xml` list the pages: add a page there when you add one. At launch, switch the JSON-LD to MobileApplication with the App Store link and add Apple's Smart App Banner tag. The site is in Google Search Console as a domain property.
 - Pushing to `main` publishes the site.

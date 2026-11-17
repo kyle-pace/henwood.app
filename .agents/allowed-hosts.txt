@@ -1,0 +1,5 @@
+# Hosts this site talks to, beyond itself. One per line, with what it's for.
+
+# Amplitude: anonymous page views and clicks. Called from /analytics.js at runtime
+# (not loaded as a script from their servers). Approved by Kyle, 2026-11-14.
+api2.amplitude.com
