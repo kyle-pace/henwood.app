@@ -13,7 +13,7 @@
 // nobody who has it off downloads it.
 import * as amplitude from '@amplitude/analytics-browser';
 
-const AMPLITUDE_API_KEY = '';
+const AMPLITUDE_API_KEY = "e6a7709fe633307daace8688fd019afa";
 
 // /analytics-loader.js decides whether this file loads at all (live site, not opted out),
 // so by the time it runs the answer is yes.
